@@ -35,8 +35,8 @@ def set_proxy(enable=True, proxy_server=""):
 
 if __name__ == "__main__":
     # Test turning the proxy OFF
-    # set_proxy(enable=False)
+    set_proxy(enable=False)
     
     # When you want to test turning it ON, uncomment the line below 
     # and replace the IP with your actual proxy server and port:
-    set_proxy(enable=True, proxy_server="172.31.2.3:8080")
+    # set_proxy(enable=True, proxy_server="172.31.2.3:8080")
