@@ -3,7 +3,7 @@ from wifi_detector import get_network_ssid
 from proxy_toggle import set_proxy
 
 def auto_switch():
-    TARGET_SSID = "BH3"
+    TARGET_SSID = ["BH1" , "BH2", "BH3", "BH4" , "IIITA"]
     PROXY_ADDRESS = "172.31.2.3:8080" 
     
     # This variable remembers the last network we saw so we can detect changes
@@ -20,7 +20,7 @@ def auto_switch():
             if current_wifi != previous_wifi:
                 print(f"\n[Network Change Detected] Switched to: '{current_wifi}'")
                 
-                if current_wifi == TARGET_SSID:
+                if current_wifi in TARGET_SSID:
                     print("Target network detected. Enabling proxy...")
                     set_proxy(enable=True, proxy_server=PROXY_ADDRESS)
                 elif current_wifi:
