@@ -8,3 +8,4 @@ env/
 
 # Sensitive user config/credentials
 config.json
+.env

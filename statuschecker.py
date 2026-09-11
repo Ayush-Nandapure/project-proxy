@@ -1,30 +1,28 @@
 import requests
 
-def is_internet_active():
+def is_internet_active(proxy=None):
+    """
+    Checks if internet is active.
+    If proxy is provided (e.g. on campus), checks through the proxy.
+    Returns True if internet is reachable, False otherwise.
+    """
     url = "http://clients3.google.com/generate_204"
+    proxies = {"http": f"http://{proxy}", "https": f"http://{proxy}"} if proxy else None
+
     try:
-        # We tell Python NOT to follow the Ruckus redirect. 
-        # We just want to saee if we get intercepted.
-        response = requests.get(url, timeout=5, allow_redirects=False)
-        
-        # If active, Google gives us 204.
-        if response.status_code == 204:
-            return True
-            
-        # If expired, Ruckus intercepts and throws a 302 Redirect.
-        elif response.status_code == 302:
-            print("Ruckus SCG interception detected! Session expired.")
-            return False
-            
-        else:
-            return False
-            
-    except requests.exceptions.RequestException as e:
-        print(f"Network error: {e}")
+        response = requests.get(
+            url,
+            timeout=5,
+            allow_redirects=False,
+            proxies=proxies
+        )
+        # 204 means open internet is active
+        return response.status_code == 204
+    except requests.RequestException:
         return False
 
 if __name__ == "__main__":
     if is_internet_active():
-        print("Session active! No login needed.")
+        print("Internet is active!")
     else:
-        print("Session expired or no internet. Login required!")
+        print("Internet is down or login required.")
