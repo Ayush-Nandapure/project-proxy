@@ -25,8 +25,9 @@ def set_proxy(enable=True, proxy_server=""):
         internet_set_option(0, 37, 0, 0) # 37 = INTERNET_OPTION_SETTINGS_CHANGED
         internet_set_option(0, 39, 0, 0) # 39 = INTERNET_OPTION_REFRESH
         
-        state = 'ON' if enable else 'OFF'
-        print(f"Proxy successfully set to: {state}")
+        state_str = 'ON' if enable else 'OFF'
+        # To avoid terminal spam, you can comment this out or only log it when necessary.
+        # print(f"Proxy successfully set to: {state_str}")
 
     except PermissionError:
         print("Permission Denied: Run your terminal as Administrator.")
