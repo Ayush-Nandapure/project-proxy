@@ -48,7 +48,7 @@ def open_settings(on_save=None):
     # --- Window Setup ---
     root = tk.Tk()
     root.title("IIITA Network Tool — Settings")
-    root.geometry("440x400")
+    root.geometry("440x480")
     root.resizable(False, False)
 
     # Colors (dark theme)
@@ -122,8 +122,8 @@ def open_settings(on_save=None):
     # Center window on screen
     root.update_idletasks()
     x = (root.winfo_screenwidth() - 440) // 2
-    y = (root.winfo_screenheight() - 400) // 2
-    root.geometry(f"440x400+{x}+{y}")
+    y = (root.winfo_screenheight() - 480) // 2
+    root.geometry(f"440x480+{x}+{y}")
 
     root.mainloop()
     return saved[0]

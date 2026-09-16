@@ -9,3 +9,8 @@ env/
 # Sensitive user config/credentials
 config.json
 .env
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
