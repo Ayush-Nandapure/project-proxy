@@ -141,6 +141,3 @@ The `.exe` file may be flagged by some antivirus programs. This is a [known fals
 
 ---
 
-## License
-
-MIT
