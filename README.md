@@ -125,6 +125,7 @@ This tool does not send your credentials, browsing data, or any personal informa
 
 ### Antivirus False Positives
 The `.exe` file may be flagged by some antivirus programs. This is a [known false positive with PyInstaller](https://github.com/pyinstaller/pyinstaller/issues/6754) — it happens because PyInstaller bundles Python into an executable, which looks suspicious to heuristic scanners. You can verify the tool is safe by reading the source code, or by running `python tray_app.py` directly instead of using the `.exe`.
+
 Solution: To bypass this you have do the following process once:
 1. Right click on the .exe file and open properties.
 2. In general tab, at bottom click the checkbox for unblock and the tool starts working normally after this. 
