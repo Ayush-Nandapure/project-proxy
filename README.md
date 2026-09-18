@@ -112,7 +112,7 @@ The executable will be created in the `dist/` folder.
 > **Please read these before using the tool.**
 
 ### Your Password is Stored in Plain Text
-Your IIITA username and password are saved in a `.env` file (a simple text file) next to the executable. Anyone with access to your laptop can open this file and read your password. **Do not share the `.env` file with anyone.**
+Your IIITA username and password are saved in a `.env` file (a simple text file) next to the executable. Anyone with access to your laptop can open this file and read your password. **Do not share the `.env` file with anyone.(I am working on a solution for this)**
 
 ### Your Password is Sent Over HTTPS
 The tool sends your credentials to the Ruckus captive portal over HTTPS (encrypted). However, the campus portal uses a self-signed SSL certificate, so the tool disables SSL verification for portal requests. This is standard practice for captive portals but means the connection is not verified against a trusted certificate authority.
@@ -125,6 +125,9 @@ This tool does not send your credentials, browsing data, or any personal informa
 
 ### Antivirus False Positives
 The `.exe` file may be flagged by some antivirus programs. This is a [known false positive with PyInstaller](https://github.com/pyinstaller/pyinstaller/issues/6754) — it happens because PyInstaller bundles Python into an executable, which looks suspicious to heuristic scanners. You can verify the tool is safe by reading the source code, or by running `python tray_app.py` directly instead of using the `.exe`.
+Solution: To bypass this you have do the following process once:
+1. Right click on the .exe file and open properties.
+2. In general tab, at bottom click the checkbox for unblock and the tool starts working. 
 
 ---
 
