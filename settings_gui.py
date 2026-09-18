@@ -1,9 +1,15 @@
 import tkinter as tk
+import sys
+import os
 from pathlib import Path
 
 
-# Path to .env file (same folder as this script)
-ENV_PATH = Path(__file__).parent / ".env"
+# When running as a PyInstaller .exe, __file__ points to a temp folder.
+# Use the .exe's directory instead so .env persists next to the executable.
+if getattr(sys, 'frozen', False):
+    ENV_PATH = Path(os.path.dirname(sys.executable)) / ".env"
+else:
+    ENV_PATH = Path(__file__).parent / ".env"
 
 
 def read_env():

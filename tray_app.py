@@ -1,6 +1,7 @@
 import threading
 import time
 import os
+import sys
 
 import pystray
 from PIL import Image, ImageDraw
@@ -12,8 +13,14 @@ from statuschecker import is_internet_active
 from authenticator import authenticate_ruckus
 from settings_gui import open_settings
 
-# Path to .env (same folder as this script)
-ENV_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".env")
+# When running as a PyInstaller .exe, __file__ points to a temp folder.
+# Use the .exe's directory instead so .env persists next to the executable.
+if getattr(sys, 'frozen', False):
+    BASE_DIR = os.path.dirname(sys.executable)
+else:
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+ENV_PATH = os.path.join(BASE_DIR, ".env")
 
 
 # ============================================================
